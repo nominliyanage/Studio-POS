@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio-POS</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="fas fa-cash-register me-2 text-warning"></i>
+                <span class="fw-bold text-light">Studio POS</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" id="homeLink">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="customerLink">
+                            <i class="fas fa-users me-1"></i>Customers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="itemLink">
+                            <i class="fas fa-box me-1"></i>Items
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="orderLink">
+                            <i class="fas fa-shopping-cart me-1"></i>Orders
+                        </a>
+                    </li>
+                </ul>
+                <div class="ms-auto d-flex">
+                    <button class="btn btn-outline-light me-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#signupModal">
+                        <i class="fas fa-user-plus me-1"></i>Sign Up
+                    </button>
+                    <button class="btn btn-danger rounded-pill">
+                        <i class="fas fa-sign-out-alt me-1"></i>Log Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- Home Page Content -->
+        <div id="homePage">
+            <!-- Carousel Background -->
+            <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/assets/images/353597146_3432654470327221_8042093564087586381_n.jpg" class="d-block w-100" alt="Business Dashboard">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/images/354439348_690014393140247_1728483892605276140_n.jpg" class="d-block w-100" alt="Sales Analytics">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/assets/images/424926779_3591429497783050_7432280085923380022_n.jpg" class="d-block w-100" alt="Inventory Management">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Customers:</h5>
+                            <p class="card-text display-4">220</p>
+                            <i class="fas fa-users card-icon text-primary"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Items:</h5>
+                            <p class="card-text display-4">3</p>
+                            <i class="fas fa-box card-icon text-success"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Orders:</h5>
+                            <p class="card-text display-4">39</p>
+                            <i class="fas fa-shopping-cart card-icon text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Customer Page Content -->
+    <div id="customerPage" style="display: none;">
+        <div class="search-container">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Search by ID">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Search by Name">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Search by Telephone">
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary me-2">Search</button>
+                    <button class="btn btn-secondary">Clear</button>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#customerModal">
+            <i class="fas fa-plus"></i> Add New Customer
+        </button>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Telephone</th>
+                        <th>Salary</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Anupama Sathsara</td>
+                        <td>45</td>
+                        <td>071-2345678</td>
+                        <td>Rs.100,000</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Nimila Pasan</td>
+                        <td>28</td>
+                        <td>077-3456789</td>
+                        <td>Rs.150,000</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Oshan Shanuka</td>
+                        <td>38</td>
+                        <td>070-4567890</td>
+                        <td>Rs.200,000</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+    <!-- Item Page Content -->
+    <div id="itemPage" style="display: none;">
+        <div class="search-container">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Search by Item ID">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Search by Name">
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary me-2">Search</button>
+                    <button class="btn btn-secondary">Clear</button>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#itemModal">
+            <i class="fas fa-plus"></i> Add New Item
+        </button>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Stock Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Gold Package</td>
+                        <td>100 Thanks Card and 1 Enlargement</td>
+                        <td>Rs.100,000.00</td>
+                        <td>Available</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Platinum Package</td>
+                        <td>150 Thanks Card and 2 Enlargement</td>
+                        <td>Rs.150,000.00</td>
+                        <td>Available</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Premium Package</td>
+                        <td>200 Thanks Card and 2 Enlargement</td>
+                        <td>Rs.200,000.00</td>
+                        <td>Available</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+    <!-- Order Page Content -->
+    <div id="orderPage" style="display: none;">
+        <div class="search-container">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Search by Order ID">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Search by Customer ID">
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary me-2">Search</button>
+                    <button class="btn btn-secondary">Clear</button>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#orderModal">
+            <i class="fas fa-plus"></i> Add New Order
+        </button>
+
+        <div class="table-responsive">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer ID</th>
+                        <th>Item ID</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>1001</td>
+                        <td>2001</td>
+                        <td>1</td>
+                        <td>Rs.100,000.00</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>1002</td>
+                        <td>2002</td>
+                        <td>1</td>
+                        <td>Rs.150,000.00</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>1003</td>
+                        <td>2003</td>
+                        <td>1</td>
+                        <td>Rs.200,000.00</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+<!-- Customer Modal -->
+<div class="modal fade" id="customerModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Customer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Customer ID</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Age</label>
+                        <input type="number" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Telephone</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Salary</label>
+                        <input type="number" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-warning">Renew</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Item Modal -->
+<div class="modal fade" id="itemModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Item ID</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Item Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="number" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Stock Quantity</label>
+                        <input type="number" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-warning">Renew</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Order Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Order</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Order ID</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Customer ID</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Item ID</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Quantity</label>
+                        <input type="number" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Total Price</label>
+                        <input type="number" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-warning">Renew</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+      document.getElementById("homeLink").addEventListener("click", function() {
+          showPage("homePage");
+      });
+      document.getElementById("customerLink").addEventListener("click", function() {
+          showPage("customerPage");
+      });
+      document.getElementById("itemLink").addEventListener("click", function() {
+          showPage("itemPage");
+      });
+      document.getElementById("orderLink").addEventListener("click", function() {
+          showPage("orderPage");
+      });
+
+      function showPage(pageId) {
+          
+          document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+          
+          
+          document.querySelector(`#${pageId.replace('Page', 'Link')}`).classList.add('active');
+
+       
+          document.getElementById("homePage").style.display = "none";
+          document.getElementById("customerPage").style.display = "none";
+          document.getElementById("itemPage").style.display = "none";
+          document.getElementById("orderPage").style.display = "none";
+          
+         
+          document.getElementById(pageId).style.display = "block";
+
+          document.getElementById("homeLink").addEventListener("click", function() {
+            showPage("homePage");
+        });
+        document.getElementById("customerLink").addEventListener("click", function() {
+            showPage("customerPage");
+        });
+        document.getElementById("itemLink").addEventListener("click", function() {
+            showPage("itemPage");
+        });
+        document.getElementById("orderLink").addEventListener("click", function() {
+            showPage("orderPage");
+        });
+
+        function showPage(pageId) {
+            
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+            
+            
+            document.querySelector(`#${pageId.replace('Page', 'Link')}`).classList.add('active');
+
+          
+            document.getElementById("homePage").style.display = "none";
+            document.getElementById("customerPage").style.display = "none";
+            document.getElementById("itemPage").style.display = "none";
+            document.getElementById("orderPage").style.display = "none";
+            
+            
+            document.getElementById(pageId).style.display = "block";
+        }
+      }
+  </script>
+</body>
+</html>
